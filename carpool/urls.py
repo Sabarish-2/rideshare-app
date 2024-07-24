@@ -2,7 +2,9 @@
 
 """URL routes for the CarPool web application."""
 
-from django.conf.urls import url
+# As per the changes, below is the new import (I kept your code commented)
+from django.urls import path, re_path
+# from django.conf.urls import url
 from django.contrib import admin
 
 from ui.views import (
@@ -12,16 +14,31 @@ from ui.views import (
 
 admin.autodiscover()
 
+# Check if below is the replacement for new changes in import path, I have commented your code below for reference
 urlpatterns = [
-    url(r'^$', welcome, name='home_page'),
-    url(r'^new_commute$', new_commute, name='new_commute'),
-    url(r'^user_home$', user_home, name='user_home'),
-    url(r'^signup', signup, name='signup'),
-    url(r'^login', signin, name='login'),
-    url(r'^save_commute$', save_commute, name='save_commute'),
-    url(r'^logout$', logout_view, name='logout'),
-    url(r'^search_commute$', search_commute, name='search_commute'),
-    url(r'^my_commutes', my_commutes, name='my_commutes'),
-    url(r'^delete_commutes', delete_commutes, name='delete_commutes'),
-    url(r'^admin/', admin.site.urls),
+    path('', welcome, name='home_page'),
+    path('new_commute', new_commute, name='new_commute'),
+    path('user_home', user_home, name='user_home'),
+    path('signup', signup, name='signup'),
+    path('login', signin, name='login'),
+    path('save_commute', save_commute, name='save_commute'),
+    path('logout', logout_view, name='logout'),
+    path('search_commute', search_commute, name='search_commute'),
+    path('my_commutes', my_commutes, name='my_commutes'),
+    path('delete_commutes', delete_commutes, name='delete_commutes'),
+    path('admin/', admin.site.urls),
 ]
+
+# urlpatterns = [
+#     url(r'^$', welcome, name='home_page'),
+#     url(r'^new_commute$', new_commute, name='new_commute'),
+#     url(r'^user_home$', user_home, name='user_home'),
+#     url(r'^signup', signup, name='signup'),
+#     url(r'^login', signin, name='login'),
+#     url(r'^save_commute$', save_commute, name='save_commute'),
+#     url(r'^logout$', logout_view, name='logout'),
+#     url(r'^search_commute$', search_commute, name='search_commute'),
+#     url(r'^my_commutes', my_commutes, name='my_commutes'),
+#     url(r'^delete_commutes', delete_commutes, name='delete_commutes'),
+#     url(r'^admin/', admin.site.urls),
+# ]
